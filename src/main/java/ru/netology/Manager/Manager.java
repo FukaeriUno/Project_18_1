@@ -5,10 +5,9 @@ import ru.netology.domain.Ticket;
 import ru.netology.repository.TicketsRepository;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 public class Manager {
-    private TicketsRepository repository;
+    private final TicketsRepository repository;
 
     public Manager(TicketsRepository repository) {
         this.repository = repository;
@@ -35,9 +34,6 @@ public class Manager {
     public boolean matches(Ticket ticket, String search1, String search2) {
         String departureAirport = ticket.getDepartureAirport();
         String arrivalAirport = ticket.getArrivalAirport();
-         if (departureAirport.contains(search1) && arrivalAirport.contains(search2)) {
-                return true;
-            }
-            return false;
-        }
+        return departureAirport.contains(search1) && arrivalAirport.contains(search2);
+    }
 }
